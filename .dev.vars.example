@@ -1,0 +1,29 @@
+# Copy to .dev.vars for local development (`next dev` and `npm run preview`).
+# In production set these with `npx wrangler secret put <NAME>` (or in the Cloudflare dashboard).
+NEXTJS_ENV=development
+
+# Signs session JWTs. Use the same value as the Flask app's SECRET_KEY to keep existing tokens valid.
+SECRET_KEY=dev-secret-key-change-in-production
+# JWT_EXPIRY_DAYS=7
+
+# Optional: direct Postgres URL. Used only when the HYPERDRIVE binding is absent.
+# DATABASE_URL=postgresql://user:password@localhost:5432/sous_chef
+
+# Base URL for verification / reset links and the Google OAuth redirect. Defaults to the request origin.
+# APP_BASE_URL=http://localhost:3000
+
+# Resend (https://resend.com) for verification and password-reset emails
+# RESEND_API_KEY=re_xxxxxxxxxxxx
+# FROM_EMAIL=Sous Chef <onboarding@resend.dev>
+
+# Google sign-in (https://console.cloud.google.com/apis/credentials)
+# Authorized redirect URI: <APP_BASE_URL>/api/auth/google/callback
+# GOOGLE_CLIENT_ID=
+# GOOGLE_CLIENT_SECRET=
+
+# Recipe sites often block cloud IPs. Workers can't use HTTP proxies, so use a scraping API instead.
+# Generic: any URL template containing {url} (URL-encoded target), e.g. ScraperAPI / ZenRows / ScrapingBee:
+# SCRAPER_API_URL=https://api.scraperapi.com/?api_key=KEY&url={url}
+# Or Bright Data Web Unlocker:
+# BRIGHTDATA_API_KEY=
+# BRIGHTDATA_ZONE=

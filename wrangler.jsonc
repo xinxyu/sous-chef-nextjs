@@ -1,0 +1,29 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "main": ".open-next/worker.js",
+  "name": "sous-chef",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    {
+      // Self-reference service binding; must match the worker name.
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "sous-chef"
+    }
+  ],
+  "hyperdrive": [
+    {
+      // Create with: npx wrangler hyperdrive create sous-chef-db --connection-string="postgres://..."
+      // then paste the returned id here.
+      "binding": "HYPERDRIVE",
+      "id": "<HYPERDRIVE_ID>",
+      // Used by `wrangler dev` / `npm run preview`.
+      "localConnectionString": "postgresql://postgres:postgres@localhost:5432/sous_chef"
+    }
+  ],
+  "observability": { "enabled": true }
+}
